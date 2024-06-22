@@ -16,7 +16,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $students = User::where('role','2')->get();
+        return view('student.index', compact('students'));
     }
 
     /**
@@ -52,6 +53,8 @@ class StudentController extends Controller
         $student->address = $request->address;
         $student->profile = $newName;
         $student->save();
+
+        return redirect()->route('student.index');
     }
 
     /**
@@ -71,9 +74,10 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit($id)
     {
-        //
+        $student = User::findOrFail($id);
+        return view('student.edit', compact('student'));
     }
 
     /**
@@ -83,9 +87,27 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateStudentRequest $request, Student $student)
+    public function update(UpdateStudentRequest $request, $id)
     {
-        //
+        $student = User::findOrFail($id);
+
+        if($request->profile){
+            $file = $request->profile;
+            $newName = "student_".uniqid().".".$file->extension();
+            $file->storeAs('public/student', $newName);
+            $student->profile = $newName;
+        }
+
+        $student->name = $request->name;
+        $student->email = $request->email;
+        $student->phone = $request->phone;
+        $student->date_of_birth = $request->date_of_birth;
+        $student->gender = $request->gender;
+        $student->address = $request->address;
+      
+        $student->update();
+
+        return redirect()->route('student.index');
     }
 
     /**
@@ -94,8 +116,12 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy($id)
     {
-        //
+        $student = User::findOrFail($id);
+        if($student){
+            $student->delete();
+        }
+        return redirect()->route('student.index');
     }
 }

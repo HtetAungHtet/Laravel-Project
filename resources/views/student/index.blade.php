@@ -8,33 +8,47 @@
             <h2 class="text-bold text-danger mt-1">Student Lists</h2>
 
                 <div class="card-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Date of Birth</th>
-                            <th scope="col">Gender</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Profile</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Mark</td>
-                        </tr>
-
-                    </tbody>
-                    </table>
+                    <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Date of Birth</th>
+                                        <th>Gender</th>
+                                        <th>Address</th>
+                                        <th>Profile</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($students as $student)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $student->name }}</td>
+                                            <td>{{ $student->email }}</td>
+                                            <td>{{ $student->phone }}</td>
+                                            <td>{{ $student->date_of_birth }}</td>
+                                            <td class="text-center">{{ $student->gender }}</td>
+                                            <td>{{ $student->address }}</td>
+                                            <td>
+                                                <img src="{{ asset('storage/student/'.$student->profile )}}" width="50px" height="50px">    
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('student.edit',$student->id) }}" class="btn btn-secondary">E</a>
+                                                <form action="{{ route('student.destroy',$student->id) }}" method="post" class="d-inline-block">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="btn btn-danger">D</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                    </div>
                 </div>
             </div>
         </div>
