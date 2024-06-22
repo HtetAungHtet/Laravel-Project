@@ -3,7 +3,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <div class="card">
+
+          <h2 class="text-bold text-danger mt-1">Student Registration</h2>
+            <div class="card mt-3">
 
                 <div class="card-body">
                     <form action="{{ route('student.store') }}" method="post" enctype="multipart/form-data">

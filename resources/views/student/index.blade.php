@@ -4,6 +4,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card mt-3">
+
+            <h2 class="text-bold text-danger mt-1">Student Lists</h2>
+
                 <div class="card-body">
                 <table class="table">
                     <thead>
