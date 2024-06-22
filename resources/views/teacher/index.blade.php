@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
 
-        <h2 class="text-bold text-danger mt-1">Teacher Lists</h2>
+        <h2 class="text-bold text-danger mt-1">Teacher List</h2>
 
             <div class="card mt-3">
                 <div class="card-body">

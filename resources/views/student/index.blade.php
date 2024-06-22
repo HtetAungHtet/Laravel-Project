@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <div class="card mt-3">
 
-            <h2 class="text-bold text-danger mt-1">Student Lists</h2>
+            <h2 class="text-bold text-danger mt-1">Student List</h2>
 
                 <div class="card-body">
                     <div class="table-responsive">
