@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
 
-        <h2 class="text-bold text-primary mt-2">Teacher List</h2>
+        <h2 class="text-bold text-primary mt-2">Admin List</h2>
 
             <div class="card mt-2">
                 <div class="card-body">
@@ -24,23 +24,23 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($teachers as $teacher)
+                                @foreach ($admins as $admin)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $teacher->name }}</td>
-                                        <td>{{ $teacher->email }}</td>
-                                        <td>{{ $teacher->phone }}</td>
-                                        <td>{{ $teacher->date_of_birth }}</td>
-                                        <td class="text-center">{{ $teacher->gender }}</td>
-                                        <td>{{ $teacher->address }}</td>
+                                        <td>{{ $admin->name }}</td>
+                                        <td>{{ $admin->email }}</td>
+                                        <td>{{ $admin->phone }}</td>
+                                        <td>{{ $admin->date_of_birth }}</td>
+                                        <td class="text-center">{{ $admin->gender }}</td>
+                                        <td>{{ $admin->address }}</td>
                                         <td>
-                                            <img src="{{ asset('storage/teacher/'.$teacher->profile )}}" width="50px" height="50px">    
+                                            <img src="{{ asset('storage/admin/'.$admin->profile )}}" width="50px" height="50px">    
                                         </td>
                                         <td>
-                                            <a href="{{ route('teacher.edit',$teacher->id) }}" class="btn btn-success">
+                                            <a href="{{ route('admin.edit',$admin->id) }}" class="btn btn-success">
                                                 <i class="fas fa-pen"></i>
                                             </a>
-                                            <form action="{{ route('teacher.destroy',$teacher->id) }}" method="post" class="d-inline-block">
+                                            <form action="{{ route('admin.destroy',$admin->id) }}" method="post" class="d-inline-block">
                                                 @csrf
                                                 @method('delete')
                                                 <button class="btn btn-danger">

@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-8">
 
-        <h2 class="text-bold text-danger mt-1">Teacher Registration</h2>
+        <h2 class="text-bold text-primary mt-1">Teacher Registration</h2>
             <div class="card mt-3">
 
                 <div class="card-body">
@@ -58,7 +58,7 @@
                       </div>
 
                       <div class="mb-3 text-right">
-                        <button class="btn btn-danger">Submit</button>
+                        <button class="btn btn-primary">Submit</button>
                       </div>
                     </form>
                 </div>

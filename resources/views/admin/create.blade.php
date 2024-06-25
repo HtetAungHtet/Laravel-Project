@@ -4,44 +4,43 @@
     <div class="row">
         <div class="col-md-8">
 
-        <h2 class="text-bold text-primary mt-1">Student Edit</h2>
+        <h2 class="text-bold text-primary mt-1">Admin Registration</h2>
             <div class="card mt-3">
 
                 <div class="card-body">
-                    <form action="{{ route('student.update',$student->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.store') }}" method="post" enctype="multipart/form-data">
                       @csrf
-                      @method('put')
-                      <input type="hidden" name="role" value="2">
+                      <input type="hidden" name="role" value="0">
                       <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Name</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" value="{{ $student->name }}">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
                       </div>
 
                       <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Enter email address" value="{{ $student->email }}">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Enter email Address">
                       </div>
 
                       <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Phone</label>
-                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter phone number" value="{{ $student->phone }}">
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter phone number">
                       </div>
 
                       <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Date of birth</label>
-                        <input type="date" class="form-control" name="date_of_birth" id="date_of_birth" placeholder="Enter date of birth" value="{{ $student->date_of_birth }}">
+                        <input type="date" class="form-control" name="date_of_birth" id="date_of_birth" placeholder="Enter date of birth">
                       </div>
 
                       <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Gender</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="male" value="0" {{ $student->gender == 0 ? "checked" : ""}}>
+                                <input class="form-check-input" type="radio" name="gender" id="male" value="0">
                                 <label class="form-check-label" for="male">
                                     Male
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="female" value="1" {{ $student->gender == 1 ? "checked" : ""}}>
+                                <input class="form-check-input" type="radio" name="gender" id="female" value="1">
                                 <label class="form-check-label" for="female">
                                     Female
                                 </label>
@@ -50,17 +49,16 @@
 
                       <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Address</label>
-                        <input type="text" class="form-control" name="address" id="exampleFormControlInput1" placeholder="Enter address" value="{{ $student->address }}">
+                        <input type="text" class="form-control" name="address" id="exampleFormControlInput1" placeholder="Enter address">
                       </div>
 
                       <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Profile</label><br>
-                        <img src="{{ asset('storage/student/'.$student->profile ) }}" width="150px" height="130px"><br><br>
+                        <label for="exampleFormControlInput1" class="form-label">Profile</label>
                         <input type="file" class="form-control" name="profile" id="exampleFormControlInput1">
                       </div>
 
                       <div class="mb-3 text-right">
-                        <button class="btn btn-danger">Submit</button>
+                        <button class="btn btn-primary">Submit</button>
                       </div>
                     </form>
                 </div>

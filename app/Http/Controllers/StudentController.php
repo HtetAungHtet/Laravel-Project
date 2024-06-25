@@ -38,6 +38,9 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
+
+        // return $request;
+
         if($request->profile){
             $file = $request->profile;
             $newName = "student_".uniqid().".".$file->extension();

@@ -3,9 +3,10 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="card mt-3">
 
-            <h2 class="text-bold text-danger mt-1">Student List</h2>
+        <h2 class="text-bold text-primary mt-2">Student List</h2>
+
+            <div class="card mt-2">
 
                 <div class="card-body">
                     <div class="table-responsive">
@@ -37,11 +38,15 @@
                                                 <img src="{{ asset('storage/student/'.$student->profile )}}" width="50px" height="50px">    
                                             </td>
                                             <td>
-                                                <a href="{{ route('student.edit',$student->id) }}" class="btn btn-secondary">E</a>
+                                                <a href="{{ route('student.edit',$student->id) }}" class="btn btn-success">
+                                                    <i class="fas fa-pen"></i>
+                                                </a>
                                                 <form action="{{ route('student.destroy',$student->id) }}" method="post" class="d-inline-block">
                                                     @csrf
                                                     @method('delete')
-                                                    <button class="btn btn-danger">D</button>
+                                                    <button class="btn btn-danger">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
                                                 </form>
                                             </td>
                                         </tr>
