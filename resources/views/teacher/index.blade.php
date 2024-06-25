@@ -20,7 +20,12 @@
                                     <th>Gender</th>
                                     <th>Address</th>
                                     <th>Profile</th>
-                                    <th>Actions</th>
+
+                                    @if (Auth::user()->role == 2)
+                                        <th class="d-none">Actions</th>
+                                    @else
+                                        <th>Actions</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,18 +41,34 @@
                                         <td>
                                             <img src="{{ asset('storage/teacher/'.$teacher->profile )}}" width="50px" height="50px">    
                                         </td>
-                                        <td>
-                                            <a href="{{ route('teacher.edit',$teacher->id) }}" class="btn btn-success">
-                                                <i class="fas fa-pen"></i>
-                                            </a>
-                                            <form action="{{ route('teacher.destroy',$teacher->id) }}" method="post" class="d-inline-block">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-danger">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </form>
-                                        </td>
+                                        @if (Auth::user()->role == 2)
+                                            <td class="d-none">
+                                                <a href="{{ route('teacher.edit',$teacher->id) }}" class="btn btn-success">
+                                                    <i class="fas fa-pen"></i>
+                                                </a>
+                                                <form action="{{ route('teacher.destroy',$teacher->id) }}" method="post" class="d-inline-block">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="btn btn-danger">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        @else
+                                            <td>
+                                                <a href="{{ route('teacher.edit',$teacher->id) }}" class="btn btn-success">
+                                                    <i class="fas fa-pen"></i>
+                                                </a>
+                                                <form action="{{ route('teacher.destroy',$teacher->id) }}" method="post" class="d-inline-block">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="btn btn-danger">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        @endif
+                                        
                                     </tr>
                                 @endforeach
                             </tbody>

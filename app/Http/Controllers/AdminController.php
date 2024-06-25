@@ -6,6 +6,7 @@ use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 use App\Models\Admin;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -16,7 +17,13 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admins = User::where("role","0")->get();
+        $admins = User::where('role','0')->get();
+
+        if(Auth::user()->role == 2 ) {
+            return redirect()->route('student.index');
+        } elseif (Auth::user()->role == 1 ) {
+            return redirect()->route('teacher.index');
+        }
         return view('admin.index', compact('admins'));
     }
 
@@ -27,6 +34,11 @@ class AdminController extends Controller
      */
     public function create()
     {
+        if(Auth::user()->role == 2 ) {
+            return redirect()->route('student.index');
+        } elseif (Auth::user()->role == 1 ) {
+            return redirect()->route('teacher.index');
+        }
         return view('admin.create');
     }
 
@@ -55,7 +67,7 @@ class AdminController extends Controller
         $admin->profile = $newName;
         $admin->save();
 
-        return redirect()->route('admin.index')->with('success', 'Admin created successfully.');
+        return redirect()->route('admin.index');
     }
 
     /**
@@ -125,6 +137,6 @@ class AdminController extends Controller
         if($user){
             $user->delete();
         }
-        return redirect()->route('admin.index')->with('success', 'Admin deleted successfully.');
+        return redirect()->route('admin.index');
     }
 }
